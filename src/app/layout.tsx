@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AuthProvider } from "@/context/AuthContext";
+import GoogleAuthModal from "@/components/GoogleAuthModal";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,8 +34,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-brand-dark selection:bg-brand-lime selection:text-black`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+          <GoogleAuthModal />
+        </AuthProvider>
       </body>
     </html>
   );
 }
+

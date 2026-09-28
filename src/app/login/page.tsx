@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ByteSpaceLogo, LimeSpiral, WhiteTorus } from "@/components/DecorativeShapes";
 import { Eye, EyeOff, Mail, Lock, ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
+  const { openGoogleModal } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -135,13 +137,10 @@ export default function LoginPage() {
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   <button
                     type="button"
-                    onClick={() => {
-                      setEmail("demo.student@bytespace.io");
-                      setPassword("password123");
-                    }}
-                    className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
+                    onClick={openGoogleModal}
+                    className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-all hover:border-brand-blue shadow-sm group"
                   >
-                    <svg className="w-4 h-4" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 transition-transform group-hover:scale-110" viewBox="0 0 24 24">
                       <path
                         fill="#4285F4"
                         d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.9c2.28-2.1 3.64-5.2 3.64-9.15z"

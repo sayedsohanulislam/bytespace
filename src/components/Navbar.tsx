@@ -45,7 +45,7 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="#courses"
+              href="/courses"
               className="hover:text-brand-lime transition-colors"
             >
               Courses
@@ -119,7 +119,7 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="#courses"
+              href="/courses"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
             >

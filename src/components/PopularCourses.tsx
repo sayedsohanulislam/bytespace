@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { COURSES, CATEGORIES, Course } from "@/data/courses";
-import { Star, Clock, BookOpen, Heart, ArrowRight, X, Check } from "lucide-react";
+import { Star, Clock, BookOpen, Heart, ArrowRight, X } from "lucide-react";
 
 interface PopularCoursesProps {
   externalFilter?: string;
@@ -12,20 +13,12 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
   const [selectedCategory, setSelectedCategory] = useState<string>("All Courses");
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
   const [activeModalCourse, setActiveModalCourse] = useState<Course | null>(null);
-  const [enrolledCourses, setEnrolledCourses] = useState<Record<string, boolean>>({});
 
   const toggleWishlist = (courseId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     setWishlist((prev) => ({
       ...prev,
       [courseId]: !prev[courseId],
-    }));
-  };
-
-  const handleEnroll = (courseId: string) => {
-    setEnrolledCourses((prev) => ({
-      ...prev,
-      [courseId]: true,
     }));
   };
 
@@ -100,16 +93,14 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course) => {
               const isWishlisted = !!wishlist[course.id];
-              const isEnrolled = !!enrolledCourses[course.id];
 
               return (
                 <div
                   key={course.id}
-                  onClick={() => setActiveModalCourse(course)}
-                  className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col cursor-pointer transform hover:-translate-y-1.5"
+                  className="group bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col transform hover:-translate-y-1.5"
                 >
                   {/* Thumbnail Container */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
+                  <Link href={`/courses/${course.id}`} className="relative aspect-video w-full overflow-hidden bg-slate-100 block">
                     <img
                       src={course.image}
                       alt={course.title}
@@ -138,7 +129,7 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
                         className={`w-4 h-4 ${isWishlisted ? "fill-red-500 text-red-500" : ""}`}
                       />
                     </button>
-                  </div>
+                  </Link>
 
                   {/* Course Body */}
                   <div className="p-6 flex flex-col flex-1">
@@ -162,9 +153,11 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-lg text-slate-900 leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">
-                      {course.title}
-                    </h3>
+                    <Link href={`/courses/${course.id}`}>
+                      <h3 className="font-bold text-lg text-slate-900 leading-snug group-hover:text-brand-blue transition-colors line-clamp-2">
+                        {course.title}
+                      </h3>
+                    </Link>
 
                     {/* Description snippet */}
                     <p className="mt-2 text-xs text-slate-500 line-clamp-2 leading-relaxed">
@@ -193,30 +186,22 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
                         </span>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleEnroll(course.id);
-                        }}
-                        className={`text-xs font-bold px-4 py-2.5 rounded-full transition-all duration-200 flex items-center gap-1.5 ${
-                          isEnrolled
-                            ? "bg-emerald-500 text-white"
-                            : "bg-slate-900 group-hover:bg-brand-lime group-hover:text-black text-white"
-                        }`}
-                      >
-                        {isEnrolled ? (
-                          <>
-                            <Check className="w-3.5 h-3.5" />
-                            <span>Enrolled</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>Enroll Now</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
-                          </>
-                        )}
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setActiveModalCourse(course)}
+                          className="text-xs text-slate-500 hover:text-slate-900 font-semibold px-2 py-1"
+                        >
+                          Quick View
+                        </button>
+                        <Link
+                          href={`/courses/${course.id}`}
+                          className="text-xs font-bold px-4 py-2.5 rounded-full bg-slate-900 group-hover:bg-brand-lime group-hover:text-black text-white transition-all duration-200 flex items-center gap-1.5"
+                        >
+                          <span>Enroll</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -225,16 +210,15 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
           </div>
         )}
 
-        {/* View All Button */}
+        {/* View All Button linking to /courses */}
         <div className="mt-14 text-center">
-          <button
-            type="button"
-            onClick={() => setSelectedCategory("All Courses")}
+          <Link
+            href="/courses"
             className="inline-flex items-center gap-2 bg-brand-lime hover:bg-brand-lime-hover text-black font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-md hover:shadow-glow transition-all transform hover:-translate-y-0.5"
           >
             <span>Explore All 5000+ Courses</span>
             <ArrowRight className="w-4 h-4 text-black" />
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -358,16 +342,13 @@ export default function PopularCourses({ externalFilter }: PopularCoursesProps) 
                   >
                     Close
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      handleEnroll(activeModalCourse.id);
-                      setActiveModalCourse(null);
-                    }}
+                  <Link
+                    href={`/courses/${activeModalCourse.id}`}
+                    onClick={() => setActiveModalCourse(null)}
                     className="px-6 py-2.5 rounded-full bg-brand-lime hover:bg-brand-lime-hover text-black text-sm font-bold shadow-md hover:shadow-glow transition-all"
                   >
-                    {enrolledCourses[activeModalCourse.id] ? "Already Enrolled" : "Enroll Now"}
-                  </button>
+                    View Full Details
+                  </Link>
                 </div>
               </div>
             </div>

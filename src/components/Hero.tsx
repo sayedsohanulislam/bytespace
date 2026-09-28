@@ -81,6 +81,26 @@ export default function Hero({ onSearch }: HeroProps) {
             Discover new skills, advance your career, and achieve your goals with high quality courses led by industry experts.
           </p>
 
+          {/* 4 Key Feature Bullets under Headline matching Figma Screen 1 */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-white/90 font-medium">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-lime" />
+              <span>Life Time Access</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-lime" />
+              <span>Online Tutoring</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-lime" />
+              <span>100% Certified</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-brand-lime" />
+              <span>250+ Mentors</span>
+            </div>
+          </div>
+
           {/* Search Bar Container */}
           <form
             onSubmit={handleSearchSubmit}

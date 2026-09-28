@@ -10,9 +10,10 @@
 
 ## 🚀 Live Demo & Links
 - **Figma Design Reference**: [ByteSpace New Check website](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website?node-id=0-1&p=f&t=eQOrqJmq6rMG5b6L-0)
-- **Live Deployment**: Deployed on Vercel
-- **GitHub Repository**: [SayedSohan/bytespace-assessment](https://github.com/SayedSohan/bytespace-assessment)
-- **Pull Request**: Dedicated feature branch `feature/bytespace-landing-auth` created with Pull Request targeting `main`.
+- **GitHub Repository**: [sayedsohanulislam/bytespace](https://github.com/sayedsohanulislam/bytespace)
+- **Pull Request**: [Pull Request #1 (feature/bytespace-landing-auth -> main)](https://github.com/sayedsohanulislam/bytespace/pull/1)
+- **Branch Strategy**: `feature/bytespace-landing-auth` (feature branch) with Pull Request targeting `main`.
+
 
 ---
 
@@ -70,8 +71,8 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/SayedSohan/bytespace-assessment.git
-   cd bytespace-assessment
+   git clone https://github.com/sayedsohanulislam/bytespace.git
+   cd bytespace
    ```
 
 2. **Install dependencies**:

@@ -3,6 +3,7 @@
 > **Candidate**: **Sayed Sohanul Islam**  
 > **Position**: Jr. Software Engineer (Frontend) — Doin Tech Limited  
 > **Tracking ID**: `0ba514a0-5786-4f49-a7b2-81272b5b96b2`  
+> **Live Deployment**: [https://sohanuls-dointech.vercel.app](https://sohanuls-dointech.vercel.app)  
 > **Repository**: [sayedsohanulislam/bytespace](https://github.com/sayedsohanulislam/bytespace)  
 > **Pull Request**: [Pull Request #1](https://github.com/sayedsohanulislam/bytespace/pull/1)  
 

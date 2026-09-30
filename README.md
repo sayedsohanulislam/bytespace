@@ -21,16 +21,6 @@ Built for the **Doin Tech Limited** Frontend Software Engineer Assessment.
 
 ---
 
-> [!IMPORTANT]
-> ### 📋 Assessment Submission Metadata
-> - **Company**: Doin Tech Limited
-> - **Position**: Jr. Software Engineer (Frontend)
-> - **Candidate Name**: **Sayed Sohanul Islam**
-> - **Candidate Email**: [`sohanul06@gmail.com`](mailto:sohanul06@gmail.com)
-> - **Candidate Phone**: `01735736885`
-> - **Tracking ID**: `0ba514a0-5786-4f49-a7b2-81272b5b96b2`
-> - **Submission Portal**: [https://career.doin.tech/submit-assessment/](https://career.doin.tech/submit-assessment/)
-> - **Deadline**: October 01, 2026
 
 ---
 
